@@ -10,8 +10,6 @@ env:
   GIT_EMAIL: kylechou94@gmail.com
   THEME_REPO: KyleChou/hexo-theme-next
   THEME_BRANCH: master
-  DEPLOY_REPO: KyleChou/kylechou.github.io
-  DEPLOY_BRANCH: master
 
 jobs:
   build:
@@ -32,13 +30,6 @@ jobs:
           repository: ${{ env.THEME_REPO }}
           ref: ${{ env.THEME_BRANCH }}
           path: themes/next
-
-      - name: Checkout deploy repo
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ env.DEPLOY_REPO }}
-          ref: ${{ env.DEPLOY_BRANCH }}
-          path: public
 
       - name: Use Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@v1
@@ -62,7 +53,6 @@ jobs:
           yarn global add hexo-cli
           yarn install
 
-
       - name: Deploy hexo
         run: |
-          hexo g
+          hexo clean && hexo generate && hexo deploy
