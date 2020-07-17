@@ -50,6 +50,7 @@ jobs:
 
       - name: Install dependencies & Deploy hexo
         run: |
+          npm i yarn -g
           yarn global add hexo-cli
           yarn install
           hexo clean && hexo generate && hexo deploy
