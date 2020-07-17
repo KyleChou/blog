@@ -53,4 +53,5 @@ jobs:
           npm i yarn -g
           yarn global add hexo-cli
           yarn install
+          npm i hexo -g
           hexo clean && hexo generate && hexo deploy
