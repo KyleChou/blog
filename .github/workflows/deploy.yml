@@ -48,11 +48,8 @@ jobs:
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
 
-      - name: Install dependencies
+      - name: Install dependencies & Deploy hexo
         run: |
           yarn global add hexo-cli
           yarn install
-
-      - name: Deploy hexo
-        run: |
           hexo clean && hexo generate && hexo deploy
